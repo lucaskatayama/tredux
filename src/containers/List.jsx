@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { DragSource, DropTarget } from 'react-dnd';
 import List from 'components/list/List';
 
@@ -31,6 +31,10 @@ const listTarget = {
 }))
 
 class ListContainer extends Component {
+  static propTypes = {
+    connectDragSource: PropTypes.func,
+    connectDropTarget: PropTypes.func,
+  }
   render() {
     const {
       connectDragSource,

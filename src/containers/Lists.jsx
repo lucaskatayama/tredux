@@ -19,6 +19,12 @@ const mapDispatchToProps = dispatch => ({
 
 @DragDropContext(HTML5Backend)
 class Lists extends Component {
+  static propTypes = {
+    lists: PropTypes.arrayOf(PropTypes.object),
+    createNewList: PropTypes.func,
+    changePosition: PropTypes.func,
+    removeList: PropTypes.func,
+  }
 
   componentWillMount() {
     this.updateDimensions();
@@ -34,10 +40,8 @@ class Lists extends Component {
     window.removeEventListener('resize', this.updateDimensions);
   }
 
-  removeList(idx) {
-    const { lists } = this.props;
-    lists.splice(idx, 1);
-    this.props.removeList(lists);
+  onCancel() {
+    this.setState({ adding: false });
   }
 
   newList() {
@@ -49,8 +53,10 @@ class Lists extends Component {
     this.setState({ adding: false });
   }
 
-  onCancel() {
-    this.setState({ adding: false });
+  removeList(idx) {
+    const { lists } = this.props;
+    lists.splice(idx, 1);
+    this.props.removeList(lists);
   }
 
   // Update main content height, removes Navbar height
