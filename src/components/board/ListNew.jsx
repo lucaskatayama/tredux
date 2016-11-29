@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FontAwesome from 'react-fontawesome';
 
 
 class ListNew extends Component {
@@ -30,6 +31,7 @@ class ListNew extends Component {
     const AddNew = (
       <div className="box-body" onClick={this.props.onClick}>
         <div className="box-title list-new">
+          <FontAwesome name="plus" />{' '}
           Add a list
         </div>
       </div>
@@ -37,8 +39,8 @@ class ListNew extends Component {
 
     const add = this.props.adding ? addingState : AddNew;
     return (
-      <div className="col-md-3">
-        <div className="box box-solid">
+      <div className="col-md-3 col-lg-3 col-xs-12 col-sm-12">
+        <div className="box box-default">
           {add}
         </div>
       </div>
