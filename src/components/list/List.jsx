@@ -20,7 +20,7 @@ const List = (props) => {
           <Card key={idx} description={e.description} />
         </div>)}
         <div className="box-footer">
-          <button className="btn btn-sm btn-success">
+          <button className="btn btn-sm btn-success" onAdd={props.onAddCard}>
             <FontAwesome name="plus" />
             {' '} Add a card
           </button>
@@ -35,6 +35,7 @@ List.propTypes = {
   name: PropTypes.string,
   height: PropTypes.number,
   isOver: PropTypes.bool,
+  onAddCard: PropTypes.func,
   cards: PropTypes.arrayOf(PropTypes.object),
 };
 

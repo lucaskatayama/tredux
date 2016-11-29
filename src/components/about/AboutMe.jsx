@@ -16,15 +16,15 @@ export default () => (
       <hr />
       <strong><i className="fa fa-pencil margin-r-5" /> Skills</strong>
       <p className="skills">
-        <span className="label label-success">Coding</span>
-        <span className="label label-info">NodeJS</span>
-        <span className="label label-warning">MongoDB</span>
-        <span className="label label-primary">React</span>
-        <span className="label label-danger">Redux</span>
-        <span className="label label-success">Flux</span>
-        <span className="label label-info">ExpressJS</span>
-        <span className="label label-warning">KoaJS</span>
+        <span className="label label-success">Coding</span>{' '}
+        <span className="label label-info">NodeJS</span>{' '}
+        <span className="label label-warning">MongoDB</span>{' '}
+        <span className="label label-primary">React</span>{' '}
+        <span className="label label-danger">Redux</span>{' '}
+        <span className="label label-success">Flux</span>{' '}
+        <span className="label label-info">ExpressJS</span>{' '}
+        <span className="label label-warning">KoaJS</span>{' '}
       </p>
     </div>
   </div>
-)
+);
