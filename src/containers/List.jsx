@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { DragSource, DropTarget } from 'react-dnd';
+import { createCard } from 'actions/lists';
 import List from 'components/list/List';
 
 
@@ -21,12 +23,12 @@ const listTarget = {
   },
 };
 
-@DropTarget('LIST', listTarget, (connect, monitor) => ({
-  connectDropTarget: connect.dropTarget(),
+@DropTarget('LIST', listTarget, (conn, monitor) => ({
+  connectDropTarget: conn.dropTarget(),
   isOver: monitor.isOver(),
 }))
-@DragSource('LIST', listSource, (connect, monitor) => ({
-  connectDragSource: connect.dragSource(),
+@DragSource('LIST', listSource, (conn, monitor) => ({
+  connectDragSource: conn.dragSource(),
   isDragging: monitor.isDragging(),
 }))
 
@@ -35,6 +37,18 @@ class ListContainer extends Component {
     connectDragSource: PropTypes.func,
     connectDropTarget: PropTypes.func,
   }
+  constructor() {
+    super();
+    this.state = {
+      addingCard: false,
+    };
+  }
+
+  addCard(card) {
+    console.log(card);
+    this.props.createCard(this.props.id, card);
+  }
+
   render() {
     const {
       connectDragSource,
@@ -43,10 +57,28 @@ class ListContainer extends Component {
     } = this.props;
     return connectDropTarget(
       <div className="col-md-3 col-sm-12 col-xs-12 col-lg-3">
-        { connectDragSource(<div><List {...props} /></div>) }
+        {
+          connectDragSource(
+            (
+              <div>
+                <List
+                  {...props}
+                  onAdd={card => this.addCard(card)}
+                  addCard={() => this.setState({ addingCard: true })}
+                  onCancel={() => this.setState({ addingCard: false })}
+                  addingCard={this.state.addingCard}
+                />
+              </div>
+            ),
+          )
+        }
       </div> // eslint-disable-line
     );
   }
 }
 
-export default ListContainer;
+const mapDispatchToProps = dispatch => ({
+  createCard: (id, card) => dispatch(createCard(id, card)),
+});
+
+export default connect(null, mapDispatchToProps)(ListContainer);

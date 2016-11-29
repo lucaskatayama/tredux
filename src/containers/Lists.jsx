@@ -78,6 +78,7 @@ class Lists extends Component {
     const lists = this.props.lists
       .map((e, idx) => <List
         key={idx}
+        id={e.id}
         index={idx}
         remove={() => this.removeList(idx)}
         move={(a, b) => this.moveCard(a, b)}

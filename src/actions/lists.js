@@ -18,6 +18,14 @@ export const newList = list => (dispatch) => {
   });
 };
 
+export const createCard = (id, card) => ({
+  type: 'LIST_CREATE_CARD',
+  payload: {
+    id,
+    card,
+  },
+});
+
 
 export const remove = (list) => {
   store.set('lists', list);
