@@ -1,0 +1,22 @@
+{
+  "parser" : "babel-eslint",
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6" : true,
+    "jest": true
+  },
+  "plugins": [ "import" ],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.babel.js"
+      }
+    }
+  },
+  "rules": {
+    "jsx-a11y/href-no-hash" : 0,
+    "jsx-a11y/no-static-element-interactions": 0
+  }
+}

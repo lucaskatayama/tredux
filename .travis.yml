@@ -1,0 +1,25 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
+node_js:
+  - '6'
+branches:
+  only:
+    - master
+before_install:
+  - sudo apt-get -qq update
+before_script:
+  - npm prune
+script:
+  - npm run test
+after_success:
+  - npm run build
+  - bash deploy.sh
+env:
+  global:
+    - GH_REF: github.com/lucaskatayama/openweather-redux.git
+    - secure: >-
+        s5zggrvNOGMMrisGOHfy2aLr1Gn75AfXpHzraHxpSqpJpuIATE5sAsWypu50iz9RYhv9B5JmTmn7zGOWGfWWvn+PF8ToYYxBLn7HyAfNMYP0vkUvvJl+PRLaDn/3dx6q8C4DERjh810cEoQhEnMq8d+AB2AblgdD+Cbihoe9HtqB4kOHVdbtOBFj7xI9hoZS24r1FqF0f+kjvWRUo52PGLR86Anibc9Zhbgrq3WQQSRTCy/qS1/9iSMcya/XS5iBGx6tYmu3i1N7PEMTGABzs0fJkyNDhSHodqG4hGnX7j+ohVS03AG+YIVMinANtIdZvX6RH+Yy8Mf1fDO3IcMPIgVoYtMcBFTTagZByGkWxZvXbufFOrWvBbNMsyCycbuZuTVe89TdKuu8kFlmMxI67WoDLYUwjseajv4jkJhl83SriCvQ+AZTnT2VpfIIfS20fkdph70Ai5wUAcrEXrTpFC4KqRbCP8szrUqxXi3ZdbMiArublBEGSMP8Mh3PTGs6ciQc5YUwRcPHFltrMZ1UAls5io329mp8/DDJF0doygbv76WPxmiJBaEvGcfqBAA7LxRQkil20hXK6V0aUpndkwYy4f/ijRNQufHnCv8gIm+UUIdeF6tDgTHF4jc+NSj+mQvtpQKD1ZA+ZntOa2rktz3GAAyphyFqXnMEOncYnNo=
