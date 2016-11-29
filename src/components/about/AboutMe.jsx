@@ -12,7 +12,7 @@ export default () => (
       </p>
       <hr />
       <strong><i className="fa fa-map-marker margin-r-5" /> Location</strong>
-      <p className="text-muted">Brazi/SP/Campinas</p>
+      <p className="text-muted">Brazil/SP/Campinas</p>
       <hr />
       <strong><i className="fa fa-pencil margin-r-5" /> Skills</strong>
       <p className="skills">

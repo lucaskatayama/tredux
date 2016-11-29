@@ -42,7 +42,7 @@ class ListContainer extends Component {
       ...props
     } = this.props;
     return connectDropTarget(
-      <div className="col-md-3">
+      <div className="col-md-3 col-sm-12 col-xs-12 col-lg-3">
         { connectDragSource(<div><List {...props} /></div>) }
       </div> // eslint-disable-line
     );
