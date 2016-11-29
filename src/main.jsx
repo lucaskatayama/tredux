@@ -12,13 +12,13 @@ import 'admin-lte';
 
 import 'styles/bootstrap-horizon.css';
 import 'styles/main.css';
-import process from 'process';
 
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import view from 'utils/ga';
 
 import configureStore from 'store/configureStore';
 import App from 'containers/App';
@@ -27,7 +27,6 @@ import NotFound from 'components/NotFound';
 import About from 'containers/About';
 
 const store = configureStore();
-
 
 const Routes = (
   <Router history={hashHistory}>
@@ -38,6 +37,8 @@ const Routes = (
     </Route>
   </Router>
 );
+
+view();
 
 ReactDOM.render(
   <Provider store={store}>

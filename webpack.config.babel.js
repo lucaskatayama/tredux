@@ -16,10 +16,9 @@ const BrowserSyncPluginConfig = new BrowserSyncPlugin({
   reload: false
 });
 var PROD = process.env.NODE_ENV === 'production';
-let prodHtml = PROD ? '.prod' : '';
 
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: __dirname + `/src/index${prodHtml}.html`,
+  template: __dirname + `/src/index.html`,
   filename: 'index.html',
   inject: 'body'
 });
@@ -83,9 +82,8 @@ let config = {
   },
   plugins: PROD ? [
     ...plugins,
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
     })
   ] : plugins
 }

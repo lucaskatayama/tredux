@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "./node_modules/.bin/rimraf docs/",
     "start": "./node_modules/.bin/webpack-dev-server",
-    "build": "env NODE_ENV='production' ./node_modules/.bin/webpack --color -p",
+    "build": "env NODE_ENV='production' ./node_modules/.bin/webpack --color",
     "lint": "./node_modules/.bin/eslint src/",
     "semantic-release": "./node_modules/.bin/semantic-release pre && ./node_modules/.bin/semantic-release post",
     "test": "./node_modules/.bin/jest && npm run lint",
@@ -77,6 +77,7 @@
     "react-dnd-html5-backend": "^2.1.2",
     "react-dom": "^15.4.0",
     "react-fontawesome": "^1.4.0",
+    "react-ga": "^2.1.2",
     "react-redux": "^4.4.6",
     "react-router": "^3.0.0",
     "react-weathericons": "1.0.2",
