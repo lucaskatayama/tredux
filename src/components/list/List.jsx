@@ -1,77 +1,18 @@
 import React from 'react';
 import Card from 'components/list/Card';
 
-const cards = [
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-  {
-    description: 'lasndansd',
-  },
-];
 
-export default ({ name }) => {
-  const height = window.innerHeight - 250;
+export default ({ name, height, cards }) => {
+  const cardsList = cards && cards.length > 0 ? cards.map((e, idx) => <div className="box-body" style={{ maxHeight: height }}>
+    <Card key={idx} description={e.description} />
+  </div>) : '';
   return (
     <div className="col-md-3 list">
       <div className="box">
         <header className="box-header with-border">
           <span className="box-title">{name}</span>
         </header>
-        <div className="box-body" style={{ height }}>
-          {cards.map((e, idx) => <Card key={idx} description={e.description} />)}
-        </div>
+        {cardsList}
         <div className="box-footer">
           <button className="btn btn-sm btn-success">Add a card</button>
         </div>

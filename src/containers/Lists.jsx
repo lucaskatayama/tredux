@@ -1,43 +1,76 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import List from 'components/list/List';
+import ListNew from 'components/board/ListNew';
+import { newList } from 'actions/lists';
 
 
-const mapStateToProps = () => ({
-  lists: [
-    'TODO',
-    'DONE',
-    'DONE',
-    'DONE',
-    'DONE',
-    'DONE',
-    'DONE',
-    'DONE',
-    'DONE',
-  ],
+const mapStateToProps = state => ({
+  lists: state.lists,
+});
+
+const mapDispatchToProps = dispatch => ({
+  createNewList: list => dispatch(newList(list)),
 });
 
 class Lists extends Component {
-  newList() {
-    console.log('kanskdj');
+
+  componentWillMount() {
+    this.updateDimensions();
   }
+
+  // Handle resize changes
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions);
+  }
+
+  // Removes when leave page
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.updateDimensions);
+  }
+
+
+  newList() {
+    this.setState({ adding: true });
+  }
+
+  saveNewList(list) {
+    this.props.createNewList(list);
+    this.setState({ adding: false });
+  }
+
+  onCancel() {
+    this.setState({ adding: false });
+  }
+
+  // Update main content height, removes Navbar height
+  updateDimensions = () => {
+    const offset = 220;
+    const height = window.innerHeight - offset;
+    this.setState({ height });
+  }
+
   render() {
+    const lists = this.props.lists
+      .map(e => <List
+        key={e.id}
+        name={e.name}
+        height={this.state.height}
+        cards={e.cards}
+      />);
     return (
       <div className="lists row-horizon">
-        {this.props.lists.map((e, idx) => <List key={idx} name={e} />)}
-        <div className="col-md-3">
-          <div className="box box-solid box-default">
-            <div className="box-header">
-              <div className="box-title list-new" onClick={this.newList}>
-                Add a list
-              </div>
-            </div>
-          </div>
-        </div>
+        {lists}
+        <ListNew
+          onClick={() => this.newList()}
+          onSave={list => this.saveNewList(list)}
+          onCancel={() => this.onCancel()}
+          adding={this.state.adding}
+        />
       </div>
     );
   }
 }
 
 
-export default connect(mapStateToProps)(Lists);
+export default connect(mapStateToProps, mapDispatchToProps)(Lists);

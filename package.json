@@ -80,6 +80,8 @@
     "redux-logger": "^2.7.4",
     "redux-thunk": "^2.1.0",
     "semantic-release": "^6.3.2",
+    "shortid": "^2.2.6",
+    "store": "^1.3.20",
     "weather-icons": "https://github.com/erikflowers/weather-icons.git"
   },
   "jest": {

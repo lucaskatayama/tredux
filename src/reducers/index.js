@@ -1,14 +1,8 @@
 import { combineReducers } from 'redux';
-import app from 'reducers/app';
-import search from 'reducers/search';
-import units from 'reducers/units';
-import cities from 'reducers/cities';
+import lists from 'reducers/lists';
 
 const rootReducer = combineReducers({
-  app,
-  search,
-  units,
-  cities,
+  lists,
 });
 
 
