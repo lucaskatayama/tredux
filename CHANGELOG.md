@@ -12,6 +12,7 @@
 ### Features
 
 * **about:** adding about ([c50e5e0](https://github.com/lucaskatayama/tredux/commit/c50e5e0))
+* **card:** add card ([060d490](https://github.com/lucaskatayama/tredux/commit/060d490))
 * **dnd:** drag and drop list to reorder ([35d2c81](https://github.com/lucaskatayama/tredux/commit/35d2c81))
 * **layout:** Fixed mobile ([5303f2f](https://github.com/lucaskatayama/tredux/commit/5303f2f))
 * **remove:** remove lists ([b408329](https://github.com/lucaskatayama/tredux/commit/b408329))
