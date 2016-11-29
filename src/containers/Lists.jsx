@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import List from 'components/list/List';
 import ListNew from 'components/board/ListNew';
-import { newList, changePosition } from 'actions/lists';
+import { newList, changePosition, remove } from 'actions/lists';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import List from './List';
 
 
 const mapStateToProps = state => ({
@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   createNewList: list => dispatch(newList(list)),
   changePosition: list => dispatch(changePosition(list)),
+  removeList: list => dispatch(remove(list)),
 });
 
 @DragDropContext(HTML5Backend)
@@ -33,6 +34,11 @@ class Lists extends Component {
     window.removeEventListener('resize', this.updateDimensions);
   }
 
+  removeList(idx) {
+    const { lists } = this.props;
+    lists.splice(idx, 1);
+    this.props.removeList(lists);
+  }
 
   newList() {
     this.setState({ adding: true });
@@ -67,7 +73,8 @@ class Lists extends Component {
       .map((e, idx) => <List
         key={idx}
         index={idx}
-        moveCard={(a, b) => this.moveCard(a, b)}
+        remove={() => this.removeList(idx)}
+        move={(a, b) => this.moveCard(a, b)}
         name={e.name}
         height={this.state.height}
         cards={e.cards}

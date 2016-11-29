@@ -17,3 +17,12 @@ export const newList = list => (dispatch) => {
     });
   });
 };
+
+
+export const remove = (list) => {
+  store.set('lists', list);
+  return {
+    type: 'LIST_REMOVED',
+    payload: list,
+  };
+};
