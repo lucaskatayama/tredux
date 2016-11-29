@@ -3,23 +3,9 @@ import { connect } from 'react-redux';
 import List from 'components/list/List';
 import ListNew from 'components/board/ListNew';
 import { newList, changePosition } from 'actions/lists';
-import { DropTarget, DragDropContext } from 'react-dnd';
+import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import update from 'react/lib/update';
 
-
-function collect(co, monitor) {
-  return {
-    connectDropTarget: co.dropTarget(),
-    isOver: monitor.isOver(),
-  };
-}
-
-const spec = {
-  drop: function (props) {
-    console.log(props);
-  },
-};
 
 const mapStateToProps = state => ({
   lists: state.lists,
