@@ -10,11 +10,17 @@ class ListNew extends Component {
     this.props.onSave({ name: this.state.name });
   }
 
+  onKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.onSave();
+    }
+  }
+
   render() {
     const addingState = (
       <div className="box-body">
         <div className="box-title list-new">
-          <input onChange={(e) => this.onChange(e)} className="form-control" type="text" placeholder="Name" style={{ marginBottom: '2px' }} />
+          <input onKeyPress={(e) => this.onKeyPress(e)} onChange={(e) => this.onChange(e)} className="form-control" autoFocus type="text" placeholder="Name" style={{ marginBottom: '2px' }} />
           <button className="btn btn-success btn-sm" onClick={() => this.onSave()}>Save</button>
           {' '}
           <button className="btn btn-danger btn-sm" onClick={this.props.onCancel}>Cancel</button>
