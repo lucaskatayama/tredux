@@ -1,7 +1,10 @@
 import React, { PropTypes, Component } from 'react';
+import FontAwesome from 'react-fontawesome';
+import { Link } from 'react-router';
 import NotificationsMenu from 'components/navbar/NotificationsMenu';
 import UserMenu from 'components/navbar/UserMenu';
 import NavbarHeader from 'components/navbar/NavbarHeader';
+
 
 class Navbar extends Component {
   render() {
@@ -26,6 +29,11 @@ class Navbar extends Component {
                 <UserMenu />
                 {/* Notifications Menu */}
                 <NotificationsMenu />
+                <li>
+                  <Link to="/about">
+                    <FontAwesome name="question-circle-o" size="lg" />{' About'}
+                  </Link>
+                </li>
               </ul>
             </div>
             {/* /.navbar-custom-menu */}

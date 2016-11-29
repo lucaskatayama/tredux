@@ -6,11 +6,6 @@ import path from 'path';
 import { version } from './package.json';
 
 
-const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: __dirname + '/src/index.html',
-  filename: 'index.html',
-  inject: 'body'
-});
 
 const BrowserSyncPluginConfig = new BrowserSyncPlugin({
   host: 'localhost',
@@ -21,6 +16,14 @@ const BrowserSyncPluginConfig = new BrowserSyncPlugin({
   reload: false
 });
 var PROD = process.env.NODE_ENV === 'production';
+let prodHtml = PROD ? '.prod' : '';
+
+const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+  template: __dirname + `/src/index${prodHtml}.html`,
+  filename: 'index.html',
+  inject: 'body'
+});
+
 const DefinePlugin = new webpack.DefinePlugin({
   'process.env': {
     'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')

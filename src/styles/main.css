@@ -38,3 +38,16 @@
 .card:hover {
   background-color: #d4d4d4 !important;
 }
+
+.skills .label {
+  margin-right: 5px;
+  margin-top: 5px;
+  float: left;
+}
+
+
+.techs {
+  background-color: #fff;
+  position: relative;
+  padding: 10px;
+}

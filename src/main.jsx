@@ -12,6 +12,7 @@ import 'admin-lte';
 
 import 'styles/bootstrap-horizon.css';
 import 'styles/main.css';
+import process from 'process';
 
 
 import React from 'react';
@@ -23,6 +24,7 @@ import configureStore from 'store/configureStore';
 import App from 'containers/App';
 import Board from 'containers/Board';
 import NotFound from 'components/NotFound';
+import About from 'containers/About';
 
 const store = configureStore();
 
@@ -31,6 +33,7 @@ const Routes = (
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Board} />
+      <Route path="about" component={About} />
       <Route path="*" component={NotFound} />
     </Route>
   </Router>
