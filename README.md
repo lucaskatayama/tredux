@@ -49,3 +49,7 @@ I'm trying to use everything I can to improve my skills with React/Redux
 - Others
   - [Font Awesome](http://fontawesome.io/)
   - [Gravatar](http://en.gravatar.com/)
+
+# Changelog
+
+[Changelog](./CHANGELOG.md)
