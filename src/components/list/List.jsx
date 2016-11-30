@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import Card from 'components/list/Card';
 import FontAwesome from 'react-fontawesome';
+import TextareaAutosize from 'react-autosize-textarea';
 
 class CardForm extends Component {
   constructor() {
@@ -9,10 +10,17 @@ class CardForm extends Component {
       value: '',
     };
   }
+  onKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.add();
+      e.preventDefault();
+    }
+    return false;
+  }
   add() {
-    if (this.state.value) {
+    if (this.state.value && this.state.value.trim()) {
       this.props.onAdd({
-        description: this.state.value,
+        description: this.state.value.trim(),
       });
       this.setState({ value: '' });
     }
@@ -21,7 +29,7 @@ class CardForm extends Component {
     const { onAdd, onCancel } = this.props;
     return (
       <div>
-        <input className="form-control" onChange={e => this.setState({ value: e.target.value })} value={this.state.value} />
+        <TextareaAutosize autoFocus className="form-control" rows={1} onKeyPress={(e) => this.onKeyPress(e)} onChange={e => this.setState({ value: e.target.value })} value={this.state.value} />
         <button className="btn btn-sm btn-success" onClick={() => this.add()}>
           Add
         </button>
