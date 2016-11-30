@@ -30,12 +30,14 @@ class CardForm extends Component {
     return (
       <div>
         <TextareaAutosize autoFocus className="form-control" rows={1} onKeyPress={(e) => this.onKeyPress(e)} onChange={e => this.setState({ value: e.target.value })} value={this.state.value} />
-        <button className="btn btn-sm btn-success" onClick={() => this.add()}>
-          Add
-        </button>
-        <button className="btn btn-sm btn-danger" onClick={onCancel}>
-          Cancel
-        </button>
+        <div style={{ marginTop: '3px' }}>
+          <button className="btn btn-sm btn-success" onClick={() => this.add()}>
+            Add
+          </button>
+          <button className="btn btn-sm btn-danger" onClick={onCancel}>
+            Cancel
+          </button>
+        </div>
       </div>
     );
   }
